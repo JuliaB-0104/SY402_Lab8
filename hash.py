@@ -31,11 +31,12 @@ if os.path.isfile("/var/www/html/hashinfo.csv"):
                 hashlist = hashlib.sha256()
                 hashlist2 = hashlist.hexdigest()
                 time_date = str(datetime.datetime.now())
-        f.write(current_file + ", ")
-        f.write(hashlist.hexdigest() + ", ")
-        f.write(time_date + "\n")
-        if newlist3 != hashlist2:
-            f.write(newlist)
+            if newlist3 != hashlist2:    
+                f.write(current_file + ", ")
+                f.write(hashlist.hexdigest() + ", ")
+                f.write(time_date + "\n")
+            else:
+                continue
     f.close()
     print("Changes made in" + newlist + time_date + hashlist2)
     quit()
